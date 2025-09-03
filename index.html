@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Umroh - Rehlatours</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>Rehlatours</h1>
+                <p>Perjalanan Suci Menuju Baitullah</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-header">
+                <h2>Formulir Pendaftaran Umroh</h2>
+                <p>Silakan lengkapi data diri Anda dengan benar dan teliti</p>
+            </div>
+
+            <form id="umrohForm" class="registration-form">
+                <!-- Hidden Registration ID -->
+                <input type="hidden" id="registrationId" name="registrationId" value="">
+                
+                <!-- Section 1: Personal Information -->
+                <div class="form-section">
+                    <h3>Data Pribadi</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="namaLengkap">Nama sesuai Paspor <span class="required">*</span></label>
+                            <input type="text" id="namaLengkap" name="namaLengkap" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalPendaftaran">Tanggal Pendaftaran <span class="required">*</span></label>
+                            <input type="date" id="tanggalPendaftaran" name="tanggalPendaftaran" required readonly>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="jenisKelamin">Jenis Kelamin <span class="required">*</span></label>
+                            <select id="jenisKelamin" name="jenisKelamin" required>
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tempatLahir">Tempat Lahir <span class="required">*</span></label>
+                            <input type="text" id="tempatLahir" name="tempatLahir" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalLahir">Tanggal Lahir <span class="required">*</span></label>
+                            <input type="date" id="tanggalLahir" name="tanggalLahir" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="namaAyah">Nama Ayah <span class="required">*</span></label>
+                            <input type="text" id="namaAyah" name="namaAyah" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="namaIbu">Nama Ibu <span class="required">*</span></label>
+                            <input type="text" id="namaIbu" name="namaIbu" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="alamat">Alamat Lengkap <span class="required">*</span></label>
+                            <textarea id="alamat" name="alamat" rows="3" required placeholder="Masukkan alamat lengkap Anda"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="kota">Kota <span class="required">*</span></label>
+                            <input type="text" id="kota" name="kota" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="provinsi">Provinsi <span class="required">*</span></label>
+                            <input type="text" id="provinsi" name="provinsi" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="kodePos">Kode Pos</label>
+                            <input type="text" id="kodePos" name="kodePos" maxlength="5" pattern="[0-9]{5}">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pekerjaan">Pekerjaan <span class="required">*</span></label>
+                            <input type="text" id="pekerjaan" name="pekerjaan" required>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <!-- Health and Special Needs Section -->
+                        <div class="form-group full-width">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="penyakitKhusus" name="penyakitKhusus">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Memiliki penyakit khusus</span>
+                            </label>
+                        </div>
+                        <div class="form-group full-width" id="penyakitKhususDetail" style="display: none;">
+                            <label for="detailPenyakit">Detail Penyakit Khusus</label>
+                            <textarea id="detailPenyakit" name="detailPenyakit" rows="3" placeholder="Jelaskan penyakit khusus yang dimiliki"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="penangananKhusus" name="penangananKhusus">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Membutuhkan penanganan khusus</span>
+                            </label>
+                        </div>
+                        <div class="form-group full-width" id="penangananKhususDetail" style="display: none;">
+                            <label for="detailPenanganan">Detail Penanganan Khusus</label>
+                            <textarea id="detailPenanganan" name="detailPenanganan" rows="3" placeholder="Jelaskan penanganan khusus yang dibutuhkan"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="kursiRoda" name="kursiRoda">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Membutuhkan kursi roda saat umroh</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Passport & Contact -->
+                <div class="form-section">
+                    <h3>Data Paspor & Kontak</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nik">NIK (16 digit) <span class="required">*</span></label>
+                            <input type="text" id="nik" name="nik" required maxlength="16" pattern="[0-9]{16}">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomorPaspor">Nomor Paspor <span class="required">*</span></label>
+                            <input type="text" id="nomorPaspor" name="nomorPaspor" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalTerbit">Tanggal Terbit Paspor <span class="required">*</span></label>
+                            <input type="date" id="tanggalTerbit" name="tanggalTerbit" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalBerakhir">Tanggal Berakhir Paspor <span class="required">*</span></label>
+                            <input type="date" id="tanggalBerakhir" name="tanggalBerakhir" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tempatTerbit">Tempat Terbit Paspor <span class="required">*</span></label>
+                            <input type="text" id="tempatTerbit" name="tempatTerbit" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="telepon">Nomor Telepon <span class="required">*</span></label>
+                            <input type="tel" id="telepon" name="telepon" required placeholder="Contoh: 081234567890">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">Nomor WhatsApp <span class="required">*</span></label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Contoh: 081234567890">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="nama@email.com">
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <!-- Experience Section -->
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="pernahUmrah" name="pernahUmrah">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Sudah pernah umroh</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="pernahHaji" name="pernahHaji">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Sudah pernah haji</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-divider">
+                        <h4>Kontak Darurat</h4>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="namaKontak">Nama Kontak Darurat <span class="required">*</span></label>
+                            <input type="text" id="namaKontak" name="namaKontak" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="hubunganKontak">Hubungan <span class="required">*</span></label>
+                            <select id="hubunganKontak" name="hubunganKontak" required>
+                                <option value="">Pilih Hubungan</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Suami/Istri">Suami/Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Saudara">Saudara</option>
+                                <option value="Kerabat">Kerabat</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="teleponKontak">Nomor Telepon Kontak <span class="required">*</span></label>
+                            <input type="tel" id="teleponKontak" name="teleponKontak" required placeholder="Contoh: 081234567890">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="statusPernikahan">Status Pernikahan</label>
+                            <select id="statusPernikahan" name="statusPernikahan">
+                                <option value="">Pilih Status</option>
+                                <option value="Belum Menikah">Belum Menikah</option>
+                                <option value="Menikah">Menikah</option>
+                                <option value="Janda/Duda">Janda/Duda</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Package Selection & Payment -->
+                <div class="form-section">
+                    <h3>Pilih Paket Umroh</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="paketDipilih">Pilih Paket Umroh <span class="required">*</span></label>
+                            <select id="paketDipilih" name="paketDipilih" required>
+                                <option value="">Pilih Paket</option>
+                                <option value="hemat-jabodetabek">Umrah Hemat Zona Jabodetabek</option>
+                                <option value="hemat-ntb">Umrah Hemat Zona NTB</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="section-divider">
+                        <h4>Informasi Tambahan</h4>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="metodePembayaran">Metode Pembayaran <span class="required">*</span></label>
+                            <select id="metodePembayaran" name="metodePembayaran" required>
+                                <option value="">Pilih Metode</option>
+                                <option value="Lunas">Lunas</option>
+                                <option value="Cicilan 60%">Cicilan 60% pertama</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Agreement & Submit -->
+                <div class="form-section">
+                    <div class="agreement-section">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span class="checkmark"></span>
+                            <span class="agreement-text">
+                                Saya menyatakan bahwa data yang saya berikan adalah benar dan saya menyetujui 
+                                <a href="#" class="link">syarat dan ketentuan</a> yang berlaku.
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="submit-section">
+                        <button type="submit" class="btn-submit">Daftar Umroh</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Rehlatours. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pendaftaran Berhasil!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <p>Terima kasih atas pendaftaran Anda. Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi lebih lanjut.</p>
+                <div class="registration-info">
+                    <p><strong>Nomor Registrasi:</strong> <span id="registrationNumber"></span></p>
+                    <p><strong>Email konfirmasi telah dikirim ke:</strong> <span id="confirmEmail"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-close-modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
