@@ -1,7 +1,5 @@
-"use client";
-
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient"; 
+import { supabase } from "./lib/supabaseClient";
 
 export default function FormPendaftaran() {
   const [loading, setLoading] = useState(false);
@@ -60,42 +58,44 @@ export default function FormPendaftaran() {
 
       if (error) throw error;
 
-      alert("Pendaftaran berhasil!");
-      setFormData({ ...formData, setuju: false }); // reset sebagian
+      alert("✅ Pendaftaran berhasil tersimpan di Supabase!");
+      setFormData({
+        nama: "",
+        tanggal_pendaftaran: "",
+        jenis_kelamin: "",
+        tempat_lahir: "",
+        tanggal_lahir: "",
+        nama_ayah: "",
+        nama_ibu: "",
+        alamat: "",
+        kota: "",
+        provinsi: "",
+        kode_pos: "",
+        pekerjaan: "",
+        nik: "",
+        no_paspor: "",
+        tgl_terbit_paspor: "",
+        tgl_akhir_paspor: "",
+        tempat_terbit_paspor: "",
+        no_hp: "",
+        whatsapp: "",
+        email: "",
+        pernah_umroh: false,
+        pernah_haji: false,
+        kontak_darurat: "",
+        hubungan: "",
+        status_nikah: "",
+        paket: "",
+        metode_bayar: "",
+        setuju: false,
+      });
     } catch (err) {
       console.error(err);
-      alert("Terjadi kesalahan saat submit.");
+      alert("❌ Gagal menyimpan pendaftaran.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* contoh 1 field */}
-      <input
-        type="text"
-        name="nama"
-        placeholder="Nama sesuai paspor"
-        value={formData.nama}
-        onChange={handleChange}
-        required
-      />
-      {/* tambahkan semua input lain sesuai field */}
-      
-      <label>
-        <input
-          type="checkbox"
-          name="setuju"
-          checked={formData.setuju}
-          onChange={handleChange}
-        />
-        Saya menyetujui syarat dan ketentuan
-      </label>
-
-      <button type="submit" disabled={loading}>
-        {loading ? "Menyimpan..." : "Daftar Umroh"}
-      </button>
-    </form>
-  );
-}
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-xl mx-auto">
