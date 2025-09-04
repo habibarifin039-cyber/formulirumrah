@@ -32,3 +32,4 @@
     "vite": "^5.4.2"
   }
 }
+npm install @supabase/supabase-js
