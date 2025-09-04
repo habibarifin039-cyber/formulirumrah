@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabaseClient"; // pastikan sudah ada konfigurasi Supabase
+import { supabase } from "@/lib/supabaseClient"; 
 
 export default function FormPendaftaran() {
   const [loading, setLoading] = useState(false);
